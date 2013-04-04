@@ -1,0 +1,9 @@
+{
+    "host": "localhost",
+    "database": "db",
+    "username": "foo",
+    "password": "bar",
+    "table": "pot",
+    "command": "echo \"%s\"",
+    "files": "files"
+}
