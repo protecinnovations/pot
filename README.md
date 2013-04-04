@@ -12,6 +12,15 @@ Records the filename of each file and the timestamp of when run in database.
 
 Can be run by passing command line flags, or will read configuration from a json config file.
 
+Installation
+============
+
+Clone this repository, or add
+```
+"protec/pot": "dev-master"
+```
+to your composer.json
+
 Usage
 =====
 

@@ -8,6 +8,12 @@
         "command"
     ],
     "homepage": "http://github.com/protecinnovations/pot",
+    "authors": [
+        {
+            "name": "Alex Denvir",
+            "email": "alexdenvir@protecinnovations.co.uk"
+        }
+    ],
     "require": {
         "php": ">= 5.3",
         "ext-pdo_mysql": "*"
