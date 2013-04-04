@@ -1,0 +1,19 @@
+{
+    "name": "protec/pot",
+    "description": "Tool to manage iterating through files in a folder and running a command against them. Records the filename of each file and the timestamp of when run in database.",
+    "license": "BSD-2-Clause",
+    "keywords": [
+        "pot",
+        "iterate",
+        "command"
+    ],
+    "homepage": "http://github.com/protecinnovations/pot",
+    "require": {
+        "php": ">= 5.3",
+        "ext-pdo_mysql": "*"
+    },
+    "autoload": {
+        "psr-0": { "Protec\\Pot": "library/" }
+    },
+    "bin": ["library/pot.php"]
+}

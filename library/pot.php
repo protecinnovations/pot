@@ -9,7 +9,7 @@ use \PDOException;
 class Pot {
     
     const CONFIGFILE = 'pot.json';
-    const VERSION = '0.0.1';
+    const VERSION = '1.0.1';
     
     /**
      * Array of arguments passed on command line

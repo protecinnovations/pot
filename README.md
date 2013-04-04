@@ -45,4 +45,5 @@ The command to run must be as complete as possible, missing only the file to run
  * echo %s
  * chmod 775 %s
  * /usr/bin/kettle/pan.sh -file=%s
+
 All files in the directory listed will have the command run against. It is recommended to give these files a numeric filename, as pot will calculate the integer value of the filename to determine what order the files should be run
