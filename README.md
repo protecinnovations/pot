@@ -24,6 +24,7 @@ pot [options]
 Options
 =======
 
+```
   --help          -h            Display help message
   --config <file> -c <file>     Use configuration from <file> instead of pot.json
   --db <database> -d <database> Override configuration file and use <database>
@@ -33,6 +34,7 @@ Options
   --files <dir>   -f <dir>      Override configuration file and use directory <dir> for transformations
   --kettle <dir>  -k <dir>      Override configuration file and use directory <dir> for kettle
   --version       -v            Display application version
+```
 
 Configuration
 =============
