@@ -9,7 +9,7 @@ use \PDOException;
 class Pot {
     
     const CONFIGFILE = 'pot.json';
-    const VERSION = '1.0.2';
+    const VERSION = '1.0.3';
     
     /**
      * Array of arguments passed on command line
@@ -154,12 +154,17 @@ class Pot {
         
         // loop through each file and fun command
         foreach ($to_run as $file) {
-            passthru(
-                sprintf(
-                    $this->command,
-                    $this->files . DIRECTORY_SEPARATOR . $file
-                )
+            
+            $command = sprintf(
+                $this->command,
+                $this->files . DIRECTORY_SEPARATOR . $file
             );
+            
+            $last_line = passthru($command, $return);
+            
+            if ($return != 0) {
+                return $this->commandError($command, $return, $last_line);
+            }
             
             $this->checkConn();
             $this->conn->beginTransaction();
@@ -453,6 +458,22 @@ class Pot {
         $this->conn->exec(
             sprintf("CREATE TABLE IF NOT EXISTS `%s` (transformation INT NOT NULL, last_run TIMESTAMP DEFAULT NOW(), PRIMARY KEY (transformation)) ENGINE = InnoDB DEFAULT CHARSET = utf8", $this->table)
         );
+    }
+    
+    /**
+     * Command exited in error, display error message and exit
+     * 
+     * @param string $command
+     * @param int $return
+     * @param string $last_line
+     */
+    protected function commandError($command, $return, $last_line)
+    {
+        echo "\033[0;31mERROR:\n";
+        echo sprintf("Executing command '%s' exited with error code %s:\n", $command, $return);
+        echo sprintf("%s\n", $last_line);
+        echo "Aborting\033[0m\n";
+        exit(1);
     }
     
     /**
