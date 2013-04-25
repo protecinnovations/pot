@@ -9,7 +9,7 @@ use \PDOException;
 class Pot {
     
     const CONFIGFILE = 'pot.json';
-    const VERSION = '1.0.1';
+    const VERSION = '1.0.2';
     
     /**
      * Array of arguments passed on command line
@@ -154,14 +154,15 @@ class Pot {
         
         // loop through each file and fun command
         foreach ($to_run as $file) {
-            $this->conn->beginTransaction();
-            exec(
+            passthru(
                 sprintf(
                     $this->command,
                     $this->files . DIRECTORY_SEPARATOR . $file
                 )
             );
             
+            $this->checkConn();
+            $this->conn->beginTransaction();
             $number = intval(pathinfo($file, PATHINFO_FILENAME));
             $insert = $this->conn->prepare("INSERT INTO {$this->table} (transformation) VALUES ({$number})");
             $insert->execute();
@@ -483,7 +484,6 @@ class Pot {
     protected function isVersion()
     {
         $version = array(
-            '-v',
             '--version'
         );
         
@@ -516,7 +516,7 @@ class Pot {
         echo "\033[0;32m  --table <table> -t <table>    \033[0mOverride configuration file and use database password <pass>\n";
         echo "\033[0;32m  --files <dir>   -f <dir>      \033[0mOverride configuration file and use directory <dir> for transformations\n";
         echo "\033[0;32m  --command <command>           \033[0mOverride configuration file and use command <command> against each file\n";
-        echo "\033[0;32m  --version       -v            \033[0mDisplay this application version\n";
+        echo "\033[0;32m  --version                     \033[0mDisplay this application version\n";
     }
     
     /**
