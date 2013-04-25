@@ -515,7 +515,7 @@ class Pot {
         echo "\033[0;32m  --pass <pass>   -p <pass>     \033[0mOverride configuration file and use database password <pass>\n";
         echo "\033[0;32m  --table <table> -t <table>    \033[0mOverride configuration file and use database password <pass>\n";
         echo "\033[0;32m  --files <dir>   -f <dir>      \033[0mOverride configuration file and use directory <dir> for transformations\n";
-        echo "\033[0;32m  --kettle <dir>  -k <dir>      \033[0mOverride configuration file and use directory <dir> for kettle\n";
+        echo "\033[0;32m  --command <command>           \033[0mOverride configuration file and use command <command> against each file\n";
         echo "\033[0;32m  --version       -v            \033[0mDisplay this application version\n";
     }
     
