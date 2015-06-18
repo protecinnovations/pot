@@ -373,7 +373,7 @@ class Pot {
         if (is_null($this->files)) {
             if (!is_null($this->json)) {
                 if (array_key_exists('files', $this->json) && !empty($this->json['files'])) {
-                    $this->files = $this->json['files'];
+                    $this->files = realpath($this->json['files']);
                 }
             }
         }
